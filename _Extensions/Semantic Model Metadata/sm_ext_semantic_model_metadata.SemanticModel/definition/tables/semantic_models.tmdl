@@ -1,0 +1,229 @@
+table semantic_models
+	lineageTag: 7484a9b8-b38d-42f6-b46f-509c95af31f4
+	sourceLineageTag: [dbo].[semantic_models]
+
+	measure '# of Models' = COUNTROWS(semantic_models)
+		formatString: 0
+		lineageTag: 9af5775c-7bd4-45b0-b676-850f29a8d988
+
+		changedProperty = Name
+
+	column upstreamDataflows
+		dataType: string
+		lineageTag: a04524f9-ea9a-4d0c-88ae-ff6b979023b3
+		sourceLineageTag: upstreamDataflows
+		summarizeBy: none
+		sourceColumn: upstreamDataflows
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'refreshSchedule.localTimeZoneId'
+		dataType: string
+		lineageTag: f365eab8-7ea8-452c-bf7b-55d359d78461
+		sourceLineageTag: refreshSchedule.localTimeZoneId
+		summarizeBy: none
+		sourceColumn: refreshSchedule.localTimeZoneId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanticModelId
+		dataType: string
+		lineageTag: 048220f8-702d-4a8e-8bea-f79c523e59e6
+		sourceLineageTag: SemanticModelId
+		summarizeBy: none
+		sourceColumn: SemanticModelId
+
+		annotation SummarizationSetBy = Automatic
+
+	column isEffectiveIdentityRolesRequired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0a75056b-c15f-4fb0-a3d6-544404c76752
+		sourceLineageTag: isEffectiveIdentityRolesRequired
+		summarizeBy: none
+		sourceColumn: isEffectiveIdentityRolesRequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceId
+		dataType: string
+		lineageTag: ddd62717-8af4-4221-8a4a-0c499bbd936a
+		sourceLineageTag: WorkspaceId
+		summarizeBy: none
+		sourceColumn: WorkspaceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDateTime
+		dataType: string
+		lineageTag: 1f730250-ab35-47d4-b056-799f5f53f63a
+		sourceLineageTag: CreatedDateTime
+		summarizeBy: none
+		sourceColumn: CreatedDateTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: string
+		lineageTag: 8aaf5791-7f6f-4f80-86fd-9c351c6d70f1
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'refreshSchedule.enabled'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8226c146-b892-491f-814b-6e257dc6b655
+		sourceLineageTag: refreshSchedule.enabled
+		summarizeBy: none
+		sourceColumn: refreshSchedule.enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContentProviderType
+		dataType: string
+		lineageTag: 81079f42-35b6-4570-82a7-91e15b97033c
+		sourceLineageTag: ContentProviderType
+		summarizeBy: none
+		sourceColumn: ContentProviderType
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 9fa26bec-456a-4bdb-80b1-59ad949633d8
+		sourceLineageTag: description
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'directQueryRefreshSchedule.localTimeZoneId'
+		dataType: string
+		lineageTag: 8ad1c990-face-41d2-8526-0e40607d3a76
+		sourceLineageTag: directQueryRefreshSchedule.localTimeZoneId
+		summarizeBy: none
+		sourceColumn: directQueryRefreshSchedule.localTimeZoneId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 38d2c15e-a2df-476b-b47e-a81a76fd45ea
+		sourceLineageTag: Name
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'refreshSchedule.notifyOption'
+		dataType: string
+		lineageTag: 52ff436f-d316-4efd-a090-f5b7670fb652
+		sourceLineageTag: refreshSchedule.notifyOption
+		summarizeBy: none
+		sourceColumn: refreshSchedule.notifyOption
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConfiguredById
+		dataType: string
+		lineageTag: d2e05c78-0d8b-47b3-83a7-3bde146777e7
+		sourceLineageTag: ConfiguredById
+		summarizeBy: none
+		sourceColumn: ConfiguredById
+
+		annotation SummarizationSetBy = Automatic
+
+	column tags
+		dataType: string
+		lineageTag: dd7719ea-9705-4782-8c65-1ef982845cca
+		sourceLineageTag: tags
+		summarizeBy: none
+		sourceColumn: tags
+
+		annotation SummarizationSetBy = Automatic
+
+	column isEffectiveIdentityRequired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 85085fc5-5e32-439d-9951-2a866a9a9cc9
+		sourceLineageTag: isEffectiveIdentityRequired
+		summarizeBy: none
+		sourceColumn: isEffectiveIdentityRequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column StorageMode
+		dataType: string
+		lineageTag: b894c48a-b1cc-4fe5-8c3a-75ed221de27d
+		sourceLineageTag: StorageMode
+		summarizeBy: none
+		sourceColumn: StorageMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'directQueryRefreshSchedule.frequency'
+		dataType: double
+		lineageTag: 9120bca9-ff23-497b-840e-b1ed2efaba64
+		sourceLineageTag: directQueryRefreshSchedule.frequency
+		summarizeBy: sum
+		sourceColumn: directQueryRefreshSchedule.frequency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'endorsementDetails.endorsement'
+		dataType: string
+		lineageTag: 72c6959f-e313-46d3-801d-18f354656168
+		sourceLineageTag: endorsementDetails.endorsement
+		summarizeBy: none
+		sourceColumn: endorsementDetails.endorsement
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'endorsementDetails.certifiedBy'
+		dataType: string
+		lineageTag: f3f448f3-0e8c-4b76-8add-5b015d392307
+		sourceLineageTag: endorsementDetails.certifiedBy
+		summarizeBy: none
+		sourceColumn: endorsementDetails.certifiedBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column expressions
+		dataType: string
+		lineageTag: e9bde4f0-09ae-429a-aafc-567c3ad16f1a
+		sourceLineageTag: expressions
+		summarizeBy: none
+		sourceColumn: expressions
+
+		annotation SummarizationSetBy = Automatic
+
+	column roles
+		dataType: string
+		lineageTag: f0ec0aec-8bfb-4323-b0a8-278b2ad392f8
+		sourceLineageTag: roles
+		summarizeBy: none
+		sourceColumn: roles
+
+		annotation SummarizationSetBy = Automatic
+
+	column schemaMayNotBeUpToDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e4f11c46-adbf-4ac6-9037-b981714ef8e2
+		sourceLineageTag: schemaMayNotBeUpToDate
+		summarizeBy: none
+		sourceColumn: schemaMayNotBeUpToDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition semantic_models = entity
+		mode: directLake
+		source
+			entityName: semantic_models
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

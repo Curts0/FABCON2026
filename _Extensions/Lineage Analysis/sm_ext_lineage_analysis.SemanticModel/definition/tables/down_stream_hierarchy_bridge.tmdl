@@ -1,0 +1,41 @@
+table down_stream_hierarchy_bridge
+	lineageTag: 188331ed-12a7-4d45-919d-2ba52987777c
+
+	column source
+		dataType: string
+		lineageTag: c8f91102-545f-4b12-9317-39b6fb9fe7e4
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column target
+		dataType: string
+		lineageTag: 7999d2ee-3370-4e09-ab81-dbf80a24d3cd
+		summarizeBy: none
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+	column length
+		dataType: int64
+		formatString: 0
+		lineageTag: 80e95f83-b548-4b03-8d73-cb444f343ad6
+		summarizeBy: sum
+		sourceColumn: length
+
+		annotation SummarizationSetBy = Automatic
+
+	partition down_stream_hierarchy_bridge = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ia46e4p4agbe5jpmnc5sha6lx4-spay4jdwchketorwz3jrdupdy4.datawarehouse.fabric.microsoft.com", "FUAM_Lakehouse"),
+				    dbo_hierarchy = Source{[Schema="dbo",Item="hierarchy_bridge"]}[Data]
+				in
+				    dbo_hierarchy
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

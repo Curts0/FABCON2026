@@ -1,0 +1,52 @@
+table semantic_model_partitions
+	lineageTag: 1194dcbb-7710-4b56-b6e4-daa318e935ee
+	sourceLineageTag: [dbo].[semantic_model_partitions]
+
+	measure '# of Partitions' = COUNTROWS(semantic_model_partitions)
+		formatString: 0
+		lineageTag: 3a1ece7c-27ca-4dc8-a981-8cdcac4830b8
+
+		changedProperty = Name
+
+	column TableId
+		dataType: string
+		lineageTag: b051e14e-89a6-49c0-be46-af520b824bc2
+		sourceLineageTag: TableId
+		summarizeBy: none
+		sourceColumn: TableId
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartitionId
+		dataType: string
+		lineageTag: 1909a570-a008-4603-bce7-2fe04cdd9a01
+		sourceLineageTag: PartitionId
+		summarizeBy: none
+		sourceColumn: PartitionId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expression
+		dataType: string
+		lineageTag: 26580dbf-7036-44bf-90b3-7f2b724ee803
+		sourceLineageTag: Expression
+		summarizeBy: none
+		sourceColumn: Expression
+
+		annotation SummarizationSetBy = Automatic
+
+	column SchemaName
+		dataType: string
+		lineageTag: d1683ea1-4cfc-4903-8fa4-67a2f4b4fbd0
+		sourceLineageTag: SchemaName
+		summarizeBy: none
+		sourceColumn: SchemaName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition semantic_model_partitions = entity
+		mode: directLake
+		source
+			entityName: semantic_model_partitions
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

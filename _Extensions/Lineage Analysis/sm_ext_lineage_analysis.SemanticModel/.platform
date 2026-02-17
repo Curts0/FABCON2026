@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "sm_ext_lineage_analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9ce8bd55-18ad-bbfa-4fe2-cc438a594921"
+  }
+}

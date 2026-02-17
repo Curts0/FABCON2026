@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DirectLake - FUAM_Lakehouse"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb", "WebModelingEdit", "SLL"]
+
+ref table semantic_model_tables
+ref table semantic_model_columns
+ref table semantic_model_data_source_bridge
+ref table semantic_model_measures
+ref table semantic_model_partitions
+ref table capacities
+ref table workspaces
+ref table semantic_models
+ref table datasource_instances
+

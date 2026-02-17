@@ -1,0 +1,192 @@
+{
+  "config": "{\"version\":\"5.69\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY25SU12\",\"type\":2,\"version\":{\"visual\":\"2.5.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"}}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "302def5c3f6efa22668b",
+      "config": "{}",
+      "name": "168dae45436b657e9805",
+      "parameters": "[{\"name\":\"3644e1846f8f59b2c4e9\",\"boundFilter\":\"6164f8f8ba841597ecc7\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}}},{\"name\":\"0b50098dbcd8c3f34e4c\",\"boundFilter\":\"e6f13f11b1eb50f13527\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}}},{\"name\":\"4d43d7289196eafdaefd\",\"boundFilter\":\"959615d65676b10672f7\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}}}]",
+      "type": 1
+    },
+    {
+      "boundSection": "a28a653047e6c51d4993",
+      "config": "{}",
+      "name": "4ccb0aa5427c7436d757",
+      "parameters": "[{\"name\":\"f3a511e8547b6b7a6367\",\"boundFilter\":\"7948fd3a3e95f5a95574\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}}},{\"name\":\"432a4d86fde8ae66ddc8\",\"boundFilter\":\"c5e5b2e9d93be35c1f81\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}}},{\"name\":\"6b5b3fcb4dd6ae33fc25\",\"boundFilter\":\"fad62b98c8e977e8da95\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}}}]",
+      "type": 1
+    },
+    {
+      "boundSection": "f9ca22ec44c61254fa57",
+      "config": "{}",
+      "name": "98c3913cd99b64e644df",
+      "parameters": "[{\"name\":\"14840035d9c3533b928f\",\"boundFilter\":\"4e3e17458af2e31c2a72\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}}},{\"name\":\"3124f5e4f83f9c02899a\",\"boundFilter\":\"b85c2c01e799631e0b5f\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}}},{\"name\":\"af15c2cd7f19ff3eff32\",\"boundFilter\":\"c6f625a5800b5945bae7\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}}}]",
+      "type": 1
+    },
+    {
+      "boundSection": "d332abec9c0410ed6ba1",
+      "config": "{}",
+      "name": "b334f4724819d8198ac4",
+      "parameters": "[{\"name\":\"66f829c19fb30267dabf\",\"boundFilter\":\"c68eb4cf082ffef2d3f9\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}}},{\"name\":\"e87bf617f5647537ec75\",\"boundFilter\":\"94ed0faaeb6a00e1a7d0\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}}},{\"name\":\"a304e3d80ab70f72b8ba\",\"boundFilter\":\"1028c8d13f6039fef071\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}}}]",
+      "type": 1
+    }
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY25SU12",
+            "path": "BaseThemes/CY25SU12.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Data Source Detail",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"6164f8f8ba841597ecc7\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"capacities\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"displayName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'eagle'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"e6f13f11b1eb50f13527\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"959615d65676b10672f7\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"w\",\"Entity\":\"workspaces\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"WorkspaceName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Adv Wks DA 2 Dev'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "302def5c3f6efa22668b",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"7a698d85731aa499c22f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":1}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"b705dd77bef16017b8a0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":39.79274611398964,\"z\":0,\"width\":1280.2072538860102,\"height\":680.2072538860103,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"semantic_models.Name\"},{\"queryRef\":\"datasource_instances.DatasourceType\"},{\"queryRef\":\"datasource_instances.connectionDetails.server\"},{\"queryRef\":\"datasource_instances.connectionDetails.extensionDataSourceKind\"},{\"queryRef\":\"datasource_instances.connectionDetails.extensionDataSourcePath\"},{\"queryRef\":\"datasource_instances.connectionDetails.path\"},{\"queryRef\":\"datasource_instances.connectionDetails.url\"},{\"queryRef\":\"datasource_instances.DatasourceId\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s2\",\"Entity\":\"semantic_models\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"datasource_instances\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"Name\"},\"Name\":\"semantic_models.Name\",\"NativeReferenceName\":\"Model\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"connectionDetails.extensionDataSourceKind\"},\"Name\":\"datasource_instances.connectionDetails.extensionDataSourceKind\",\"NativeReferenceName\":\"connectionDetails.extensionDataSourceKind\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"connectionDetails.extensionDataSourcePath\"},\"Name\":\"datasource_instances.connectionDetails.extensionDataSourcePath\",\"NativeReferenceName\":\"connectionDetails.extensionDataSourcePath\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"connectionDetails.path\"},\"Name\":\"datasource_instances.connectionDetails.path\",\"NativeReferenceName\":\"connectionDetails.path\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"connectionDetails.server\"},\"Name\":\"datasource_instances.connectionDetails.server\",\"NativeReferenceName\":\"connectionDetails.server\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"connectionDetails.url\"},\"Name\":\"datasource_instances.connectionDetails.url\",\"NativeReferenceName\":\"connectionDetails.url\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DatasourceType\"},\"Name\":\"datasource_instances.DatasourceType\",\"NativeReferenceName\":\"DatasourceType\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"DatasourceId\"},\"Name\":\"datasource_instances.DatasourceId\",\"NativeReferenceName\":\"DatasourceId\"}]},\"columnProperties\":{\"semantic_models.Name\":{\"displayName\":\"Model\"}},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 680.21,
+          "width": 1280.21,
+          "x": 0.00,
+          "y": 39.79,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Models",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "a1140051d09095eab95c",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"bf7fd1ae5c7d0a3a5e55\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":1280.2072538860102,\"height\":720}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"capacities.displayName\",\"active\":true},{\"queryRef\":\"workspaces.WorkspaceName\",\"active\":true},{\"queryRef\":\"semantic_models.Name\",\"active\":true}],\"Values\":[{\"queryRef\":\"datasource_instances.# of Data Sources\"},{\"queryRef\":\"semantic_models.# of Models\"},{\"queryRef\":\"semantic_model_tables.# of Tables\"},{\"queryRef\":\"semantic_model_measures.# of Measures\"},{\"queryRef\":\"semantic_model_columns.# of Columns\"},{\"queryRef\":\"semantic_model_partitions.# of Partitions\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"capacities\",\"Type\":0},{\"Name\":\"s4\",\"Entity\":\"semantic_models\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"semantic_model_tables\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"semantic_model_measures\",\"Type\":0},{\"Name\":\"s2\",\"Entity\":\"semantic_model_columns\",\"Type\":0},{\"Name\":\"s3\",\"Entity\":\"semantic_model_partitions\",\"Type\":0},{\"Name\":\"w\",\"Entity\":\"workspaces\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"datasource_instances\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"displayName\"},\"Name\":\"capacities.displayName\",\"NativeReferenceName\":\"Capacity\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s4\"}},\"Property\":\"Name\"},\"Name\":\"semantic_models.Name\",\"NativeReferenceName\":\"Model\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"# of Tables\"},\"Name\":\"semantic_model_tables.# of Tables\",\"NativeReferenceName\":\"# of Tables\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"# of Measures\"},\"Name\":\"semantic_model_measures.# of Measures\",\"NativeReferenceName\":\"# of Measures\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"# of Columns\"},\"Name\":\"semantic_model_columns.# of Columns\",\"NativeReferenceName\":\"# of Columns\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s3\"}},\"Property\":\"# of Partitions\"},\"Name\":\"semantic_model_partitions.# of Partitions\",\"NativeReferenceName\":\"# of Partitions\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"WorkspaceName\"},\"Name\":\"workspaces.WorkspaceName\",\"NativeReferenceName\":\"Workspace\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s4\"}},\"Property\":\"# of Models\"},\"Name\":\"semantic_models.# of Models\",\"NativeReferenceName\":\"# of Models\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"# of Data Sources\"},\"Name\":\"datasource_instances.# of Data Sources\",\"NativeReferenceName\":\"# of Data Sources\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"displayName\"}}}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"capacities.displayName\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}}],\"isPinned\":true},{\"queryRefs\":[\"workspaces.WorkspaceName\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}}],\"isPinned\":true},{\"queryRefs\":[\"semantic_models.Name\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}}],\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'eagle'\"}}],\"isToggled\":true,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'Adv Wks DA 0 Prod'\"}}],\"isToggled\":true}]}]}}],\"columnProperties\":{\"capacities.displayName\":{\"displayName\":\"Capacity\"},\"semantic_models.Name\":{\"displayName\":\"Model\"},\"workspaces.WorkspaceName\":{\"displayName\":\"Workspace\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"258.83510464502115D\"}}}},\"selector\":{\"metadata\":\"workspaces.WorkspaceName\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"239.01972618630447D\"}}}},\"selector\":{\"metadata\":\"capacities.displayName\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"189.09326424870466D\"}}}},\"selector\":{\"metadata\":\"semantic_models.Name\"}}]},\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 720.00,
+          "width": 1280.21,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Column Detail",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"7948fd3a3e95f5a95574\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"c5e5b2e9d93be35c1f81\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"fad62b98c8e977e8da95\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "a28a653047e6c51d4993",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1c3d02f5cf3576f26c33\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":1}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"cc38cb144fc65c090070\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":39.79274611398964,\"z\":0,\"width\":1280.2072538860102,\"height\":680.2072538860103,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"semantic_models.Name\"},{\"queryRef\":\"semantic_model_tables.TableName\"},{\"queryRef\":\"semantic_model_columns.ColumnName\"},{\"queryRef\":\"semantic_model_columns.ColumnType\"},{\"queryRef\":\"semantic_model_columns.DataType\"},{\"queryRef\":\"semantic_model_columns.Expression\"},{\"queryRef\":\"semantic_model_columns.isHidden\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"semantic_model_tables\",\"Type\":0},{\"Name\":\"s2\",\"Entity\":\"semantic_models\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"semantic_model_columns\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TableName\"},\"Name\":\"semantic_model_tables.TableName\",\"NativeReferenceName\":\"Table\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"Name\"},\"Name\":\"semantic_models.Name\",\"NativeReferenceName\":\"Model\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"ColumnName\"},\"Name\":\"semantic_model_columns.ColumnName\",\"NativeReferenceName\":\"ColumnName\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"ColumnType\"},\"Name\":\"semantic_model_columns.ColumnType\",\"NativeReferenceName\":\"ColumnType\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"DataType\"},\"Name\":\"semantic_model_columns.DataType\",\"NativeReferenceName\":\"DataType\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Expression\"},\"Name\":\"semantic_model_columns.Expression\",\"NativeReferenceName\":\"Expression\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"isHidden\"},\"Name\":\"semantic_model_columns.isHidden\",\"NativeReferenceName\":\"isHidden\"}]},\"columnProperties\":{\"semantic_model_tables.TableName\":{\"displayName\":\"Table\"},\"semantic_models.Name\":{\"displayName\":\"Model\"}},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 680.21,
+          "width": 1280.21,
+          "x": 0.00,
+          "y": 39.79,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Table & Partition Detail",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"c68eb4cf082ffef2d3f9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"w\",\"Entity\":\"workspaces\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"WorkspaceName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Adv Wks DA 0 Prod'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"94ed0faaeb6a00e1a7d0\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"capacities\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"displayName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'eagle'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"1028c8d13f6039fef071\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"semantic_models\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Data God Modelv3'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "d332abec9c0410ed6ba1",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"3ac5500642ec0989e80d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":39.79274611398964,\"z\":1,\"width\":1280.2072538860102,\"height\":680.2072538860103,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"semantic_model_tables.TableName\"},{\"queryRef\":\"semantic_model_tables.IsHidden\"},{\"queryRef\":\"semantic_model_tables.StorageMode\"},{\"queryRef\":\"semantic_model_partitions.# of Partitions\"},{\"queryRef\":\"semantic_model_partitions.Expression\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"semantic_model_tables\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"semantic_model_partitions\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TableName\"},\"Name\":\"semantic_model_tables.TableName\",\"NativeReferenceName\":\"Table\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"# of Partitions\"},\"Name\":\"semantic_model_partitions.# of Partitions\",\"NativeReferenceName\":\"# of Partitions\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"IsHidden\"},\"Name\":\"semantic_model_tables.IsHidden\",\"NativeReferenceName\":\"IsHidden\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"StorageMode\"},\"Name\":\"semantic_model_tables.StorageMode\",\"NativeReferenceName\":\"StorageMode\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Expression\"},\"Name\":\"semantic_model_partitions.Expression\",\"NativeReferenceName\":\"Expression\"}]},\"columnProperties\":{\"semantic_model_tables.TableName\":{\"displayName\":\"Table\"}},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 680.21,
+          "width": 1280.21,
+          "x": 0.00,
+          "y": 39.79,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"7877c5ae29f231be548b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":2}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 2.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Measure Detail",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"4e3e17458af2e31c2a72\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"semantic_models\"}},\"Property\":\"Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"semantic_models\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Data God Modelv3'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"b85c2c01e799631e0b5f\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"workspaces\"}},\"Property\":\"WorkspaceName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"w\",\"Entity\":\"workspaces\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"WorkspaceName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Adv Wks DA 0 Prod'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5},{\"name\":\"c6f625a5800b5945bae7\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"capacities\"}},\"Property\":\"displayName\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"capacities\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"displayName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'eagle'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "f9ca22ec44c61254fa57",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"23f5b4fe6c0f31d5b62b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":39.79274611398964,\"z\":0,\"width\":1280.2072538860102,\"height\":680.2072538860103,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"semantic_models.Name\"},{\"queryRef\":\"semantic_model_tables.TableName\"},{\"queryRef\":\"semantic_model_measures.MeasureName\"},{\"queryRef\":\"semantic_model_measures.IsHidden\"},{\"queryRef\":\"semantic_model_measures.Expression\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"semantic_model_tables\",\"Type\":0},{\"Name\":\"s1\",\"Entity\":\"semantic_model_measures\",\"Type\":0},{\"Name\":\"s2\",\"Entity\":\"semantic_models\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"TableName\"},\"Name\":\"semantic_model_tables.TableName\",\"NativeReferenceName\":\"Table\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"Expression\"},\"Name\":\"semantic_model_measures.Expression\",\"NativeReferenceName\":\"Expression\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"MeasureName\"},\"Name\":\"semantic_model_measures.MeasureName\",\"NativeReferenceName\":\"MeasureName\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s1\"}},\"Property\":\"IsHidden\"},\"Name\":\"semantic_model_measures.IsHidden\",\"NativeReferenceName\":\"IsHidden\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s2\"}},\"Property\":\"Name\"},\"Name\":\"semantic_models.Name\",\"NativeReferenceName\":\"Model\"}]},\"columnProperties\":{\"semantic_model_tables.TableName\":{\"displayName\":\"Table\"},\"semantic_models.Name\":{\"displayName\":\"Model\"}},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Minimal'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 680.21,
+          "width": 1280.21,
+          "x": 0.00,
+          "y": 39.79,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"5f805558c5b2c23ca479\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":1}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

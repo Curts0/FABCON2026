@@ -1,0 +1,28 @@
+table semantic_model_data_source_bridge
+	lineageTag: 1daeb6d4-d919-4fde-aef0-10547135a464
+	sourceLineageTag: [dbo].[semantic_model_data_source_bridge]
+
+	column DatasourceInstanceId
+		dataType: string
+		lineageTag: c69ebdf6-f899-47a4-9884-32fc2e863669
+		sourceLineageTag: DatasourceInstanceId
+		summarizeBy: none
+		sourceColumn: DatasourceInstanceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanticModelId
+		dataType: string
+		lineageTag: a462767c-456e-4bc4-a249-49d86dc88235
+		sourceLineageTag: SemanticModelId
+		summarizeBy: none
+		sourceColumn: SemanticModelId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition semantic_model_data_source_bridge = entity
+		mode: directLake
+		source
+			entityName: semantic_model_data_source_bridge
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

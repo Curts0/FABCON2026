@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["hierarchy","up_stream_hierarchy_bridge","down_stream_hierarchy_bridge","items","upstream_items","downstream_items"]
+
+annotation PBI_ProTooling = ["SLL"]
+
+ref table hierarchy
+ref table up_stream_hierarchy_bridge
+ref table down_stream_hierarchy_bridge
+ref table upstream_items
+ref table items
+ref table downstream_items
+
+ref cultureInfo en-US
+

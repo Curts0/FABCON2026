@@ -1,0 +1,80 @@
+table semantic_model_columns
+	lineageTag: 36a54b66-f01b-4982-b4cb-7606383d7ac9
+	sourceLineageTag: [dbo].[semantic_model_columns]
+
+	measure '# of Columns' = COUNTROWS(semantic_model_columns)
+		formatString: 0
+		lineageTag: 34816046-b0ee-4b96-9836-049079655627
+
+		changedProperty = Name
+
+	column TableId
+		dataType: string
+		lineageTag: ed572628-0c06-45eb-a539-e7945da50980
+		sourceLineageTag: TableId
+		summarizeBy: none
+		sourceColumn: TableId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColumnId
+		dataType: string
+		lineageTag: 92f4c3a1-1c21-40c1-b29e-d952de8090da
+		sourceLineageTag: ColumnId
+		summarizeBy: none
+		sourceColumn: ColumnId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColumnName
+		dataType: string
+		lineageTag: 44c4d6b5-2dfd-4897-8a51-387c4ca84474
+		sourceLineageTag: ColumnName
+		summarizeBy: none
+		sourceColumn: ColumnName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ColumnType
+		dataType: string
+		lineageTag: 53a311aa-e71a-4af8-900c-58a69191e9ae
+		sourceLineageTag: ColumnType
+		summarizeBy: none
+		sourceColumn: ColumnType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataType
+		dataType: string
+		lineageTag: 05818289-8f63-4218-b229-2302703916c5
+		sourceLineageTag: DataType
+		summarizeBy: none
+		sourceColumn: DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column isHidden
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6d331c95-d605-40b1-8db5-b884458e7ef8
+		sourceLineageTag: isHidden
+		summarizeBy: none
+		sourceColumn: isHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expression
+		dataType: string
+		lineageTag: 5766b242-5b97-4d8a-be7e-04ea77a503bb
+		sourceLineageTag: Expression
+		summarizeBy: none
+		sourceColumn: Expression
+
+		annotation SummarizationSetBy = Automatic
+
+	partition semantic_model_columns = entity
+		mode: directLake
+		source
+			entityName: semantic_model_columns
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+
