@@ -1,0 +1,141 @@
+table workspaces
+	lineageTag: d6546a60-57b1-477a-8660-8624315b2758
+	sourceLineageTag: [dbo].[workspaces]
+
+	column IsReadOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 652cba1b-b901-488b-a494-3d9a2643ec5a
+		sourceLineageTag: IsReadOnly
+		summarizeBy: none
+		sourceColumn: IsReadOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceId
+		dataType: string
+		lineageTag: 09c019fd-88bc-4e5c-9635-878bf7aea342
+		sourceLineageTag: WorkspaceId
+		summarizeBy: none
+		sourceColumn: WorkspaceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 6a4a6ac2-f731-4986-a020-71129dee9e6f
+		sourceLineageTag: Type
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column fuam_deleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 87db1346-2499-422f-b661-72afe10de413
+		sourceLineageTag: fuam_deleted
+		summarizeBy: none
+		sourceColumn: fuam_deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CapacityMigrationStatus
+		dataType: string
+		lineageTag: 46c3f90f-d736-4831-b233-8bd89085be65
+		sourceLineageTag: CapacityMigrationStatus
+		summarizeBy: none
+		sourceColumn: CapacityMigrationStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 45c18ac4-c57e-4736-9e6d-8e93a59d9586
+		sourceLineageTag: Description
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column fuam_modified_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 02596143-56a3-4954-bf03-2309c025abad
+		sourceLineageTag: fuam_modified_at
+		summarizeBy: none
+		sourceColumn: fuam_modified_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 94a63285-64e3-43f2-b0ae-b355c8251517
+		sourceLineageTag: State
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsOnDedicatedCapacity
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8ad5794e-480b-4573-99c3-fd6da96295d9
+		sourceLineageTag: IsOnDedicatedCapacity
+		summarizeBy: none
+		sourceColumn: IsOnDedicatedCapacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column DomainId
+		dataType: string
+		lineageTag: 095f1ca8-6e8c-4aa3-a6a8-b71998c7cb4b
+		sourceLineageTag: DomainId
+		summarizeBy: none
+		sourceColumn: DomainId
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceName
+		dataType: string
+		lineageTag: e323d2d1-fd24-416d-965c-52a262ed23e1
+		sourceLineageTag: WorkspaceName
+		summarizeBy: none
+		sourceColumn: WorkspaceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasWorkspaceLevelSettings
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a48aad52-9224-4096-9461-1b524ef5fb29
+		sourceLineageTag: HasWorkspaceLevelSettings
+		summarizeBy: none
+		sourceColumn: HasWorkspaceLevelSettings
+
+		annotation SummarizationSetBy = Automatic
+
+	column CapacityId
+		dataType: string
+		lineageTag: 5a1826bd-0865-46dd-9287-41dc8766b31b
+		sourceLineageTag: CapacityId
+		summarizeBy: none
+		sourceColumn: CapacityId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultDatasetStorageFormat
+		dataType: string
+		lineageTag: 303a32ee-ebbb-4621-ab57-105586246576
+		sourceLineageTag: DefaultDatasetStorageFormat
+		summarizeBy: none
+		sourceColumn: DefaultDatasetStorageFormat
+
+		annotation SummarizationSetBy = Automatic
+
+	partition workspaces = entity
+		mode: directLake
+		source
+			entityName: workspaces
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

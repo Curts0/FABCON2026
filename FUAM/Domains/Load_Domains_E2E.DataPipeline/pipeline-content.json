@@ -1,0 +1,115 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "1efd1e45-40bb-996d-4abd-2eb488731387",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "display_data": {
+              "value": {
+                "value": "@pipeline().parameters.display_data",
+                "type": "Expression"
+              },
+              "type": "bool"
+            }
+          },
+          "sessionTag": "fuam"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "01_Transfer_Domains_Unit",
+        "dependsOn": [
+          {
+            "activity": "Get Domains",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "paginationRules": {
+              "supportRFC5988": "true"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "domains"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "ecb0ae4b-0e49-4f3f-ad00-64b5dfb23685"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "JsonSink",
+            "formatSettings": {
+              "type": "JsonWriteSettings",
+              "filePattern": "arrayOfObjects"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "raw/domains",
+                  "fileName": "domains.json"
+                }
+              },
+              "schema": {},
+              "linkedService": {
+                "name": "FUAM_Lakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "d4ad947a-0173-b1b7-466f-67fd52a41b90",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get Domains",
+        "description": "https://learn.microsoft.com/en-us/rest/api/fabric/admin/domains/list-domains?tabs=HTTP",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "display_data": {
+        "type": "bool",
+        "defaultValue": false
+      }
+    }
+  }
+}

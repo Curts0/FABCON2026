@@ -1,0 +1,165 @@
+table hierarchy
+	isHidden
+	lineageTag: 1abf2eb7-fe7f-41e8-b3e3-1e6ddacecdba
+
+	measure 'Count Rows' = COUNTROWS('hierarchy')
+		formatString: 0
+		isHidden
+		lineageTag: ebe0bfee-e558-4509-a154-849f4fbb3615
+
+		changedProperty = IsHidden
+
+	column 'Up Stream Name And Type' = [UpStreamName] & " [" & [UpStreamType] & "]"
+		isHidden
+		lineageTag: 54fea0e8-4db6-4c9d-9eb1-7252c3c1289e
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpStreamId
+		dataType: string
+		isHidden
+		lineageTag: 098cb207-6aed-45f5-ad8d-b26164ccc0e3
+		summarizeBy: none
+		sourceColumn: UpStreamId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpStreamWorkspaceId
+		dataType: string
+		isHidden
+		lineageTag: 6c3f8627-c9d8-4646-bbb0-8c707fa729d5
+		summarizeBy: none
+		sourceColumn: UpStreamWorkspaceId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpStreamName
+		dataType: string
+		isHidden
+		lineageTag: 13ce9534-9376-4007-8603-41c2db36e5ae
+		summarizeBy: none
+		sourceColumn: UpStreamName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpStreamType
+		dataType: string
+		isHidden
+		lineageTag: 7abf0f78-694a-4abe-a581-826c39f8c44b
+		summarizeBy: none
+		sourceColumn: UpStreamType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpStreamWorkspaceName
+		dataType: string
+		isHidden
+		lineageTag: a4f826eb-5021-4bf7-b775-32da1afefe46
+		summarizeBy: none
+		sourceColumn: UpStreamWorkspaceName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownStreamId
+		dataType: string
+		isHidden
+		lineageTag: 60b23c1d-129a-4b3a-aae3-c8ec86ec9243
+		summarizeBy: none
+		sourceColumn: DownStreamId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownStreamWorkspaceId
+		dataType: string
+		isHidden
+		lineageTag: 0e5e8c23-fa19-49f0-a181-babe49c54bc3
+		summarizeBy: none
+		sourceColumn: DownStreamWorkspaceId
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownStreamName
+		dataType: string
+		isHidden
+		lineageTag: f0acbb49-f28a-4242-9704-d9d99f2e6a61
+		summarizeBy: none
+		sourceColumn: DownStreamName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownStreamType
+		dataType: string
+		isHidden
+		lineageTag: f0896151-8fe2-45f9-b8d5-43fa14ecc1a7
+		summarizeBy: none
+		sourceColumn: DownStreamType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DownStreamWorkspaceName
+		dataType: string
+		isHidden
+		lineageTag: ef9fe76e-6970-4c65-8c11-c222cdf94161
+		summarizeBy: none
+		sourceColumn: DownStreamWorkspaceName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceDF
+		dataType: string
+		isHidden
+		lineageTag: 0bd0632f-6ee1-42fc-8a87-b33e4e12ac9c
+		summarizeBy: none
+		sourceColumn: SourceDF
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Down Stream Name And Type' = [DownStreamName] & " [" & [DownStreamType] & "]"
+		isHidden
+		lineageTag: 6ef3a591-ea25-497a-a721-9aa7f7c37495
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition hierarchy = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ia46e4p4agbe5jpmnc5sha6lx4-spay4jdwchketorwz3jrdupdy4.datawarehouse.fabric.microsoft.com", "FUAM_Lakehouse"),
+				    dbo_hierarchy = Source{[Schema="dbo",Item="hierarchy"]}[Data]
+				in
+				    dbo_hierarchy
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

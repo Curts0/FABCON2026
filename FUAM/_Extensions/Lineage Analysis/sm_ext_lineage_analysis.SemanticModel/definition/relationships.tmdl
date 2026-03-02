@@ -1,0 +1,23 @@
+relationship 1292e08f-e219-ee63-3b11-3aa07a27cc24
+	crossFilteringBehavior: bothDirections
+	fromColumn: up_stream_hierarchy_bridge.source
+	toColumn: upstream_items.Id
+
+relationship dd6cb81d-e9e3-580b-bd33-f162a82de25c
+	fromColumn: up_stream_hierarchy_bridge.target
+	toColumn: items.Id
+
+relationship 64a019fb-5be0-f171-100b-9962e4823e1b
+	fromColumn: down_stream_hierarchy_bridge.source
+	toColumn: items.Id
+
+relationship 28aa9880-db44-529e-371c-a80739010e36
+	crossFilteringBehavior: bothDirections
+	fromColumn: down_stream_hierarchy_bridge.target
+	toColumn: downstream_items.Id
+
+relationship 4ac059f4-d6a0-b800-ecd6-27f8d1391347
+	toCardinality: many
+	fromColumn: hierarchy.DownStreamId
+	toColumn: down_stream_hierarchy_bridge.target
+

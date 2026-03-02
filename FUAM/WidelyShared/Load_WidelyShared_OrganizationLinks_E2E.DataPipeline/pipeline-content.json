@@ -1,0 +1,116 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "c5a8f7fd-c082-a7c2-49bc-535b6c532706",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "display_data": {
+              "value": {
+                "value": "@pipeline().parameters.display_data",
+                "type": "Expression"
+              },
+              "type": "bool"
+            }
+          },
+          "sessionTag": "fuam"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "01_Transfer_WidelyShared_OrganizationLinks_Unit",
+        "dependsOn": [
+          {
+            "activity": "Get WidelyShareArtifacts LinksSharedToWholeOrganization",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "RestSource",
+            "requestMethod": "GET",
+            "paginationRules": {
+              "supportRFC5988": "true",
+              "AbsoluteUrl": "$.$.continuationUri"
+            },
+            "httpRequestTimeout": "00:01:40",
+            "requestInterval": "00.00:00:00.010",
+            "datasetSettings": {
+              "type": "RestResource",
+              "typeProperties": {
+                "relativeUrl": "widelySharedArtifacts/linksSharedToWholeOrganization"
+              },
+              "schema": [],
+              "externalReferences": {
+                "connection": "7405a7a2-8fb5-44dd-a76d-a8bf4001a12b"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "JsonSink",
+            "formatSettings": {
+              "type": "JsonWriteSettings",
+              "filePattern": "arrayOfObjects"
+            },
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Json",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "raw/widely_shared_artifacts/organization_links",
+                  "fileName": "organization_links.json"
+                }
+              },
+              "schema": {},
+              "linkedService": {
+                "name": "FUAM_Lakehouse",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "d4ad947a-0173-b1b7-466f-67fd52a41b90",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get WidelyShareArtifacts LinksSharedToWholeOrganization",
+        "description": "https://learn.microsoft.com/en-en/rest/api/power-bi/admin/widely-shared-artifacts-links-shared-to-whole-organization#code-try-0",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "display_data": {
+        "type": "bool",
+        "defaultValue": false
+      }
+    }
+  }
+}

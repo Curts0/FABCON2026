@@ -1,0 +1,84 @@
+table capacities
+	lineageTag: a031cc4e-77f5-4733-beed-6a7b3862e5fa
+	sourceLineageTag: [dbo].[capacities]
+
+	column CapacityId
+		dataType: string
+		lineageTag: 8cd67d75-afaa-4cba-98b7-53386f5f36b3
+		sourceLineageTag: CapacityId
+		summarizeBy: none
+		sourceColumn: CapacityId
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: c06a6eab-8fc5-40bb-88bd-f94aa71f5bc6
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column fuam_deleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 149f6f87-0a71-4872-b140-934bd9fd3393
+		sourceLineageTag: fuam_deleted
+		summarizeBy: none
+		sourceColumn: fuam_deleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku
+		dataType: string
+		lineageTag: cfb6320a-171d-46b9-b874-db6c644b43a0
+		sourceLineageTag: sku
+		summarizeBy: none
+		sourceColumn: sku
+
+		annotation SummarizationSetBy = Automatic
+
+	column displayName
+		dataType: string
+		lineageTag: c44ed41a-5757-44d1-954a-4b61866104b7
+		sourceLineageTag: displayName
+		summarizeBy: none
+		sourceColumn: displayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column fuam_modified_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e52d379a-c613-4f0a-8fb7-6eb27f5ea1e1
+		sourceLineageTag: fuam_modified_at
+		summarizeBy: none
+		sourceColumn: fuam_modified_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 02350a23-f02e-4682-b5e5-480fa631fc9c
+		sourceLineageTag: state
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacityUserAccessRight
+		dataType: string
+		lineageTag: 64165cab-6320-42f8-bee5-728fe93dd00a
+		sourceLineageTag: capacityUserAccessRight
+		summarizeBy: none
+		sourceColumn: capacityUserAccessRight
+
+		annotation SummarizationSetBy = Automatic
+
+	partition capacities = entity
+		mode: directLake
+		source
+			entityName: capacities
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

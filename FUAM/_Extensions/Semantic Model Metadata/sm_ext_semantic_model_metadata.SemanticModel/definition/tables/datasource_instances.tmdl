@@ -1,0 +1,142 @@
+table datasource_instances
+	lineageTag: db20fbc6-371e-4a8a-9af2-54f9a6b4f655
+	sourceLineageTag: [dbo].[datasource_instances]
+
+	measure '# of Data Sources' = COUNTROWS(datasource_instances)
+		formatString: 0
+		lineageTag: 37a48398-36d8-40e7-8c6a-5d8120b627f7
+
+		changedProperty = Name
+
+	column fuam_datasourceKind
+		dataType: string
+		lineageTag: 10a4f35c-a05d-4ea5-ba70-03bfe890ed83
+		sourceLineageTag: fuam_datasourceKind
+		summarizeBy: none
+		sourceColumn: fuam_datasourceKind
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.extensionDataSourcePath'
+		dataType: string
+		lineageTag: 75e8ee9f-80df-456c-b4d2-49533fc529b2
+		sourceLineageTag: connectionDetails.extensionDataSourcePath
+		summarizeBy: none
+		sourceColumn: connectionDetails.extensionDataSourcePath
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.account'
+		dataType: string
+		lineageTag: 58c32892-939d-404b-a4e8-81e339da51db
+		sourceLineageTag: connectionDetails.account
+		summarizeBy: none
+		sourceColumn: connectionDetails.account
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.sharePointSiteUrl'
+		dataType: string
+		lineageTag: f6d557cf-c4e8-4066-a256-bcf4ef00eca9
+		sourceLineageTag: connectionDetails.sharePointSiteUrl
+		summarizeBy: none
+		sourceColumn: connectionDetails.sharePointSiteUrl
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.url'
+		dataType: string
+		lineageTag: 357e8f50-4a1f-4a75-8286-8ddbd55b6a1e
+		sourceLineageTag: connectionDetails.url
+		summarizeBy: none
+		sourceColumn: connectionDetails.url
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.path'
+		dataType: string
+		lineageTag: 686d6d53-9742-45ba-8682-798f6b6e836e
+		sourceLineageTag: connectionDetails.path
+		summarizeBy: none
+		sourceColumn: connectionDetails.path
+
+		annotation SummarizationSetBy = Automatic
+
+	column FUAM_ConnectionString
+		dataType: string
+		lineageTag: 1714069d-86d1-4a99-8d6e-ec8aeb96cc5b
+		sourceLineageTag: FUAM_ConnectionString
+		summarizeBy: none
+		sourceColumn: FUAM_ConnectionString
+
+		annotation SummarizationSetBy = Automatic
+
+	column DatasourceType
+		dataType: string
+		lineageTag: 3c7298ed-1ed8-430f-aed0-41499901c8e4
+		sourceLineageTag: DatasourceType
+		summarizeBy: none
+		sourceColumn: DatasourceType
+
+		annotation SummarizationSetBy = Automatic
+
+	column GatewayId
+		dataType: string
+		lineageTag: 175f7449-0dae-4370-a7f0-5de70989a3ff
+		sourceLineageTag: GatewayId
+		summarizeBy: none
+		sourceColumn: GatewayId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DatasourceId
+		dataType: string
+		lineageTag: fc8fd95c-dc50-44c3-b5fc-4c81e5df20c3
+		sourceLineageTag: DatasourceId
+		summarizeBy: none
+		sourceColumn: DatasourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.extensionDataSourceKind'
+		dataType: string
+		lineageTag: 392f7800-447e-4a21-902d-5794e5057ac2
+		sourceLineageTag: connectionDetails.extensionDataSourceKind
+		summarizeBy: none
+		sourceColumn: connectionDetails.extensionDataSourceKind
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.database'
+		dataType: string
+		lineageTag: 4c59431e-43b7-40b2-93de-e0444168c8da
+		sourceLineageTag: connectionDetails.database
+		summarizeBy: none
+		sourceColumn: connectionDetails.database
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.server'
+		dataType: string
+		lineageTag: 0cdac43d-bd16-46e5-a515-f4298ce91c26
+		sourceLineageTag: connectionDetails.server
+		summarizeBy: none
+		sourceColumn: connectionDetails.server
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'connectionDetails.domain'
+		dataType: string
+		lineageTag: 108ca7b6-3f56-47d1-a9c9-ee1412c88eeb
+		sourceLineageTag: connectionDetails.domain
+		summarizeBy: none
+		sourceColumn: connectionDetails.domain
+
+		annotation SummarizationSetBy = Automatic
+
+	partition datasource_instances = entity
+		mode: directLake
+		source
+			entityName: datasource_instances
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

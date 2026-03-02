@@ -1,0 +1,65 @@
+table downstream_items
+	lineageTag: 4e181172-c136-4728-8426-b8eac83288db
+
+	column Id
+		dataType: string
+		lineageTag: 0077befb-048f-4871-988d-2817e4192922
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceId
+		dataType: string
+		lineageTag: 0b94e783-ee23-4089-ad7c-06557361f41b
+		summarizeBy: none
+		sourceColumn: WorkspaceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: f8394602-367c-4458-ac3e-e898eca3bfc9
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: ef43a17a-16f0-4e8b-bbd9-24c48dd6c35c
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceName
+		dataType: string
+		lineageTag: 6b1982af-641e-45a8-864c-5a79c6344360
+		summarizeBy: none
+		sourceColumn: WorkspaceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 18ed2008-bbd2-4c99-8962-b7557e4df0ba
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition downstream_items = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ia46e4p4agbe5jpmnc5sha6lx4-spay4jdwchketorwz3jrdupdy4.datawarehouse.fabric.microsoft.com", "FUAM_Lakehouse"),
+				    dbo_hierarchy = Source{[Schema="dbo",Item="hierarchy_items"]}[Data]
+				in
+				    dbo_hierarchy
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

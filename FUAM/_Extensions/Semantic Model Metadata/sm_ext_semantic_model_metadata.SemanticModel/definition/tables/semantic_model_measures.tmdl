@@ -1,0 +1,62 @@
+table semantic_model_measures
+	lineageTag: fc8e4402-6c01-4e17-ba3a-d412f8ff838f
+	sourceLineageTag: [dbo].[semantic_model_measures]
+
+	measure '# of Measures' = COUNTROWS(semantic_model_measures)
+		formatString: 0
+		lineageTag: 7cc81be1-1afd-408a-87e3-41794ef284d9
+
+		changedProperty = Name
+
+	column TableId
+		dataType: string
+		lineageTag: f3f4737f-5ac5-49b6-a024-019c2ccc95fa
+		sourceLineageTag: TableId
+		summarizeBy: none
+		sourceColumn: TableId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MeasureId
+		dataType: string
+		lineageTag: 0c79eead-b62d-4353-b2ed-a49959c2126c
+		sourceLineageTag: MeasureId
+		summarizeBy: none
+		sourceColumn: MeasureId
+
+		annotation SummarizationSetBy = Automatic
+
+	column MeasureName
+		dataType: string
+		lineageTag: f405a1f5-9f0c-482e-8475-190e0cc486dc
+		sourceLineageTag: MeasureName
+		summarizeBy: none
+		sourceColumn: MeasureName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsHidden
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9331302c-2369-4d01-86c5-7076b312197b
+		sourceLineageTag: IsHidden
+		summarizeBy: none
+		sourceColumn: IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expression
+		dataType: string
+		lineageTag: 2b3a0a7e-3025-4e2a-b293-553c36c8d8f5
+		sourceLineageTag: Expression
+		summarizeBy: none
+		sourceColumn: Expression
+
+		annotation SummarizationSetBy = Automatic
+
+	partition semantic_model_measures = entity
+		mode: directLake
+		source
+			entityName: semantic_model_measures
+			expressionSource: 'DirectLake - FUAM_Lakehouse'
+

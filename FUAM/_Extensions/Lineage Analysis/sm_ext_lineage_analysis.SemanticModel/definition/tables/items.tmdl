@@ -1,0 +1,98 @@
+table items
+	lineageTag: c64b4d2f-55e3-4d7b-98d5-8349bbb05fbf
+
+	measure '# of Items Up Stream' = 0 + COUNT(upstream_items[Id])
+		formatString: 0
+		lineageTag: 60dc0ce1-d5f8-4334-911a-c4dd12745e92
+
+	measure '# of Items Down Stream' = 0 + COUNT(downstream_items[Id])
+		formatString: 0
+		lineageTag: cfe9c356-bb18-4940-a2f3-ac308f7f3e8d
+
+	measure '# of Workspaces Down Stream' = DISTINCTCOUNT(downstream_items[WorkspaceId])
+		formatString: 0
+		lineageTag: 5c4b45f2-eb2f-4ed2-a6a3-9cd7a719e478
+
+	measure '# of Workspaces Up Stream' = DISTINCTCOUNT(upstream_items[WorkspaceId])
+		formatString: 0
+		lineageTag: 36fe4149-c921-4d80-89d0-efae2cdbc13a
+
+	measure '# of Layers Up Stream' = 0 + MAX(up_stream_hierarchy_bridge[length])
+		formatString: 0
+		lineageTag: b5ca73fd-4954-45c7-a763-e1e34411c242
+
+	measure '# of Layers Down Stream' = 0 + MAX(down_stream_hierarchy_bridge[length])
+		formatString: 0
+		lineageTag: 548709f4-4cd0-4dcf-8bb0-d081c0658b88
+
+	measure 'Selected Workspace' = SELECTEDVALUE(items[WorkspaceName], "Multiple Selected")
+		lineageTag: fd7c5ffa-4c9a-4816-9405-30095fdbe456
+
+	measure 'Selected Item Type' = SELECTEDVALUE(items[Type], "Multiple Selected")
+		lineageTag: d6846d04-7b79-450e-9883-9f8b7923e464
+
+	measure 'Selected Item' = SELECTEDVALUE(items[Name], "Multiple Selected")
+		lineageTag: 845d37fe-cd8d-48ce-8ea7-cfccc19b553c
+
+	column Id
+		dataType: string
+		lineageTag: 67083ff4-13ea-4ea4-b0fd-3fc5d7b1dafc
+		summarizeBy: none
+		sourceColumn: Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceId
+		dataType: string
+		lineageTag: 6e9aaf97-209a-4f2b-a63c-913861e4a6ba
+		summarizeBy: none
+		sourceColumn: WorkspaceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: d0220e91-f4cc-4417-a3cd-e28859f62f28
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 4e390808-06dd-463b-be5d-94b52e231aed
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceName
+		dataType: string
+		lineageTag: 3b6a8abc-352e-41a3-aeb8-f80e0d79c6bd
+		summarizeBy: none
+		sourceColumn: WorkspaceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 7502cd57-5af8-45cf-8331-cb54a5ef8e51
+		dataCategory: WebUrl
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition items = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ia46e4p4agbe5jpmnc5sha6lx4-spay4jdwchketorwz3jrdupdy4.datawarehouse.fabric.microsoft.com", "FUAM_Lakehouse"),
+				    dbo_hierarchy = Source{[Schema="dbo",Item="hierarchy_items"]}[Data]
+				in
+				    dbo_hierarchy
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

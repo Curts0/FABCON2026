@@ -1,0 +1,33 @@
+relationship 87394e9d-b26a-17e8-b9ae-3377ecd30f42
+	fromColumn: semantic_model_partitions.TableId
+	toColumn: semantic_model_tables.TableId
+
+relationship 75b9c079-5f38-54b2-a540-6fe6e2742391
+	fromColumn: semantic_models.WorkspaceId
+	toColumn: workspaces.WorkspaceId
+
+relationship eb2eb1a7-c4e9-d470-9142-e2d1c8cc1936
+	fromColumn: semantic_model_data_source_bridge.SemanticModelId
+	toColumn: semantic_models.SemanticModelId
+
+relationship 08d885da-9592-2748-24e7-0b2dd2381cbe
+	crossFilteringBehavior: bothDirections
+	fromColumn: semantic_model_data_source_bridge.DatasourceInstanceId
+	toColumn: datasource_instances.DatasourceId
+
+relationship 6147634c-8de8-3d57-98c0-19bc0dc88823
+	fromColumn: semantic_model_columns.TableId
+	toColumn: semantic_model_tables.TableId
+
+relationship bf805a74-af1a-20b2-2f53-86492017b401
+	fromColumn: semantic_model_measures.TableId
+	toColumn: semantic_model_tables.TableId
+
+relationship 7c5c368d-c27d-f08a-0120-2d3258bee833
+	fromColumn: workspaces.CapacityId
+	toColumn: capacities.CapacityId
+
+relationship 2d2e06f0-7217-fd4a-4c8b-b65074ab62ef
+	fromColumn: semantic_model_tables.SemanticModelId
+	toColumn: semantic_models.SemanticModelId
+
