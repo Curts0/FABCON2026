@@ -1,0 +1,237 @@
+# Semantic Model CICD Pipeline
+
+name: Semantic Model CICD
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/?view=azure-pipelines
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#pipeline-variables
+trigger: none
+
+parameters:
+  - name: notes
+    displayName: "Notes"
+    type: string
+    default: "Default Run"
+  - name: azuresubscription
+    displayName: "Azure Subscription Service Connection"
+    type: string
+    default: "DevOps-PowerBIPoC-SvcConn-Dev"
+  - name: pbiserviceconnection
+    displayName: "Power BI Service Connection"
+    type: string
+    default: "DevOps-PowerBI-SvcConn-Dev"
+  - name: project
+    displayName: "Azure DevOps Project Name"
+    type: string
+    default: "Power BI Playbook"
+  - name: repo
+    displayName: "Azure DevOps Repo Name"
+    type: string
+    default: "CICD Model Testing"
+  - name: branch
+    displayName: "Azure DevOps Branch Ref"
+    type: string
+    default: "test"
+  - name: recoverybranch
+    displayName: "Azure DevOps Recovery Branch Ref"
+    type: string
+    default: "master"
+  - name: semanticmodellocation
+    displayName: "Semantic Model database.json Location"
+    type: string
+    default: "model/database.json"
+  - name: bparuleslocation
+    displayName: "BPA Rules Location"
+    type: string
+    default: "bpa/bparules.json"
+  - name: workspace
+    displayName: "Power BI Workspace Name"
+    type: string
+    default: "Baker Tilly Client Demo - External Facing - Dev"
+  - name: dataset
+    displayName: "Power BI Dataset Name"
+    type: string
+    default: "cicd_testing"
+  - name: runbpa
+    displayName: "Run BPA"
+    type: boolean
+    default: true
+  - name: deploymodel
+    displayName: "Deploy Model"
+    type: boolean
+    default: true
+
+variables:
+  - group: DevOps-PowerBI-SvcConn
+
+stages:
+  - stage: tabulareditor
+    displayName: "Tabular Editor"
+
+    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md
+    pool:
+      vmImage: "windows-2025"
+      demands: msbuild
+
+    jobs:
+      - job: te2
+        displayName: "Build & Test"
+        steps:
+          - checkout: self
+            displayName: "Downloading DevOps Files"
+
+          - checkout: git://${{ parameters.project }}/${{ parameters.repo}}@refs/heads/${{ parameters.branch }}
+            displayName: "Downloading Updated Branch"
+
+          - template: ./download-te2.yaml
+
+          # https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/cmd-line-v2?view=azure-pipelines
+          - task: Cmdline@2
+            displayName: "Build Updated Semantic Model"
+            inputs:
+              failOnStderr: true
+              script: |
+                TabularEditor.exe "$(Build.SourcesDirectory)\${{parameters.repo}}\${{parameters.semanticmodellocation}}" -BUILD "model.bim" -V
+
+          - publish: model.bim
+            artifact: modelbim
+            displayName: "Publish model.bim"
+
+          - checkout: git://${{ parameters.project }}/${{ parameters.repo}}@refs/heads/${{ parameters.recoverybranch }}
+            displayName: "Checking out Recovery Branch"
+
+          - task: Cmdline@2
+            displayName: "Build Recovery Semantic Model"
+            inputs:
+              failOnStderr: true
+              script: |
+                TabularEditor.exe "$(Build.SourcesDirectory)\${{parameters.repo}}\${{parameters.semanticmodellocation}}" -BUILD "recoverymodel.bim" -V
+
+          - publish: recoverymodel.bim
+            artifact: recoverymodelbim
+            displayName: "Publish recoverymodel.bim"
+
+          - checkout: git://${{ parameters.project }}/${{ parameters.repo}}@refs/heads/${{ parameters.branch }}
+            displayName: "Return to Updated Branch"
+
+          - task: Cmdline@2
+            condition: eq('${{ parameters.runbpa }}', true)
+            continueOnError: true
+            displayName: "Run Tabular Editor BPA"
+            inputs:
+              script: |
+                echo "Tabular Editor BPA"
+                TabularEditor.exe "model.bim" -ANALYZE "$(Build.SourcesDirectory)\${{parameters.repo}}\${{parameters.bparuleslocation}}" -TRX bparesults.trx -V
+
+            # https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/reference/publish-test-results-v2?view=azure-pipelines&tabs=trx%2Ctrxattachments%2Cyaml
+          - task: PublishTestResults@2
+            displayName: "Publish BPA Test Results"
+            inputs:
+              testResultsFormat: "VSTest"
+              testResultsFiles: "**/bparesults.trx"
+              testRunTitle: "Tabular Editor BPA Results"
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+              reportGenerator: VSTSPR
+            condition: and(eq('${{ parameters.runbpa }}', true), always())
+
+      - job: manualvalidation
+        displayName: "Override BPA Failure"
+        dependsOn: te2
+        condition: and(eq('${{ parameters.runbpa }}', true), failed('te2'))
+        pool: server
+        steps:
+          - task: ManualValidation@0
+            inputs:
+              notifyUsers: curtis.stallings@bakertilly.com
+              instructions: "Review BPA test results. If approved, deployment will continue."
+              onTimeout: "reject"
+
+      - job: deploy
+        displayName: "Deploy Model"
+        dependsOn:
+          - manualvalidation
+          - te2
+        condition: and(or(succeeded('manualvalidation'), succeeded('te2')), eq('${{ parameters.deploymodel }}', true))
+        steps:
+          - checkout: self
+            displayName: "Downloading DevOps Files"
+
+          - checkout: git://${{ parameters.project }}/${{ parameters.repo}}@refs/heads/${{ parameters.branch }}
+            displayName: "Downloading Semantic Model Repo"
+
+          - download: current
+            artifact: modelbim
+            displayName: "Download model.bim artifact"
+
+          - template: ./download-te2.yaml
+            parameters:
+              azuresubscription: ${{parameters.azuresubscription}}
+
+          - task: Cmdline@2
+            displayName: "Deploy dataset bim file to the stage"
+            inputs:
+              script: |
+                TabularEditor.exe "$(Pipeline.Workspace)/modelbim/model.bim" -Deploy "Provider=MSOLAP;Data Source=powerbi://api.powerbi.com/v1.0/myorg/${{parameters.workspace}};User ID=app:$(clientid)@$(tenant);Password=$(secretvalue)" "${{parameters.dataset}}" -O -C -P -R -V -E
+
+      - job: postdeployment
+        displayName: "Post Deployment Steps"
+        dependsOn: deploy
+        condition: succeeded('deploy')
+        steps:
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: "3.13"
+              addToPath: true
+            displayName: "Use Python 3.13"
+
+          - script: python3 -m pip install python_tabular==0.5.6 pytest==8.4.2
+            displayName: "Install PyTabular & PyTest"
+
+          - task: pythonScript@0
+            inputs:
+              scriptSource: "inline"
+              script: |
+                import pytabular as p
+                model = p.Tabular("Data Source=powerbi://api.powerbi.com/v1.0/myorg/${{parameters.workspace}};User ID=app:$(clientid)@$(tenant);Password=$(secretvalue);Initial Catalog=${{parameters.dataset}};")
+                model.Tables.refresh()
+            displayName: "Refresh Tables"
+
+          - script: pytest DevOps\semantic-model-pipelines\test --model "Data Source=powerbi://api.powerbi.com/v1.0/myorg/${{parameters.workspace}};User ID=app:$(clientid)@$(tenant);Password=$(secretvalue);Initial Catalog=${{parameters.dataset}};" --junitxml=pytestresults.xml
+            displayName: "Run PyTest"
+            continueOnError: true
+
+          - task: PublishTestResults@2
+            displayName: "Publish PyTest Results"
+            inputs:
+              testResultsFormat: "JUnit"
+              testResultsFiles: "**/pytestresults.xml"
+              testRunTitle: "PyTest Results"
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+              reportGenerator: VSTSPR
+            condition: always()
+
+      - job: recovery
+        displayName: "Recovery Attempt"
+        dependsOn: postdeployment
+        condition: failed('postdeployment')
+        steps:
+          - checkout: self
+            displayName: "Downloading DevOps Files"
+
+          # Don't need this but forcing to be compatible for te2 download
+          - checkout: git://${{ parameters.project }}/${{ parameters.repo}}@refs/heads/${{ parameters.recoverybranch }}
+            displayName: "Downloading Recovery Branch"
+
+          - download: current
+            artifact: recoverymodelbim
+            displayName: "Download model.bim artifact"
+
+          - template: ./download-te2.yaml
+            parameters:
+              azuresubscription: ${{parameters.azuresubscription}}
+
+          - task: Cmdline@2
+            displayName: "Deploy Previous BIM"
+            inputs:
+              script: |
+                TabularEditor.exe "$(Pipeline.Workspace)/recoverymodelbim/recoverymodel.bim" -Deploy "Provider=MSOLAP;Data Source=powerbi://api.powerbi.com/v1.0/myorg/${{parameters.workspace}};User ID=app:$(clientid)@$(tenant);Password=$(secretvalue)" "${{parameters.dataset}}" -O -C -P -R -V -E
