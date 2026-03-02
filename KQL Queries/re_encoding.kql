@@ -1,0 +1,15 @@
+AzureDiagnostics
+| where OperationName == "ProgressReportEnd"
+| where EventSubclass_s == 55
+| project-keep Resource, DatabaseName_s, ObjectReference_s, TextData_s, Duration_s, StartTime_t, EndTime_t
+| extend Object_Json = parse_xml(ObjectReference_s)
+| extend Database = tostring(Object_Json.Object.Database)
+| extend Model = tostring(Object_Json.Object.Model)
+| extend Table = tostring(Object_Json.Object.Table)
+| extend Partition = tostring(Object_Json.Object.Partition)
+| extend Duration_Seconds = toint(Duration_s)/1000.00
+| extend Column = extract(@"<pii>(.*?)</pii>",1,TextData_s)
+| project-away Object_Json, DatabaseName_s,ObjectReference_s,Duration_s
+| project-rename Start_Time = StartTime_t, End_Time = EndTime_t, Text = TextData_s
+| project-reorder Start_Time, End_Time, Table, Column, Duration_Seconds, Text, Database, Model, Partition, Resource
+| order by Start_Time desc

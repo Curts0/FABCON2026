@@ -1,0 +1,19 @@
+let error_table = 
+    AzureDiagnostics
+    | where ResourceProvider == 'MICROSOFT.ANALYSISSERVICES'
+    | where OperationName == 'Error'
+    | where isempty(User_s) == false;
+let process_table =
+    AzureDiagnostics
+    | where ResourceProvider == 'MICROSOFT.ANALYSISSERVICES'
+    | where Error_s == -1055784777
+    | where OperationName == 'CommandEnd'
+    | where EventSubclass_s == 38;
+let main_table = 
+    error_table
+    | join kind=innerunique process_table on RootActivityId_g;
+main_table
+| project-keep EndTime_t1,DatabaseName_s1,TextData_s1,TextData_s,Resource,ServerName_s,User_s,ApplicationName_s
+| project-reorder EndTime_t1,DatabaseName_s1,TextData_s1,TextData_s,ServerName_s,Resource,User_s,ApplicationName_s
+| project-rename End_Time=EndTime_t1,Database=DatabaseName_s1,Details=TextData_s1,Error=TextData_s,Server=ServerName_s,User=User_s,Application=ApplicationName_s
+| order by End_Time desc

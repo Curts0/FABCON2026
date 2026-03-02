@@ -1,0 +1,9 @@
+AzureDiagnostics
+| where OperationName == "QueryEnd"
+| where EventSubclass_s == 3
+| where Resource == "ENTERAZURERESOURCE" //Enter Azure Resource
+| where ApplicationName_s == "PowerBI"
+| where TimeGenerated > ago(30d) //Remove if you would prefer to use the time selection in Azure
+| extend extract_column = extract_all(@"('.*?'\[.*?\])",TextData_s)
+| mv-expand extract_column
+| summarize Total_Number_Queried=dcount(SPID_s) by Table_Column= tostring(extract_column)

@@ -1,0 +1,27 @@
+let process_table = 
+AzureDiagnostics
+| where OperationName == "ProgressReportEnd"
+| where EventSubclass_s == 1
+| where Success_s == 1
+| extend Object_Json = parse_xml(ObjectReference_s)
+| extend Database = tostring(Object_Json.Object.Database)
+| extend Model = tostring(Object_Json.Object.Model)
+| extend Table = tostring(Object_Json.Object.Table)
+| extend Partition = tostring(Object_Json.Object.Partition)
+| extend Duration_Seconds = toint(Duration_s)/1000.00
+| extend unique_id = strcat(tostring(SPID_s),"-",ObjectPath_s)
+| project-keep ResourceGroup, Resource, Database, Model, Table, Partition, User_s, Duration_Seconds, StartTime_t, EndTime_t, unique_id
+| project-rename End_Time = EndTime_t, Start_Time = StartTime_t, User = User_s, Resource_Group = ResourceGroup;
+let rows_table = 
+AzureDiagnostics
+| where OperationName == "ProgressReportEnd"
+| where EventSubclass_s == 17
+| where Success_s == 1
+| extend unique_id = strcat(tostring(SPID_s),"-",ObjectPath_s)
+| project-keep unique_id, IntegerData_s
+| project-rename Number_Of_Rows = IntegerData_s;
+process_table
+| join kind = leftouter  rows_table on $left.unique_id == $right.unique_id
+| project-away unique_id, unique_id1
+| project-reorder Resource_Group, Resource, Database, Model, Table, Partition, User, Duration_Seconds, Number_Of_Rows, Start_Time, End_Time
+| distinct *

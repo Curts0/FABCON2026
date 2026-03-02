@@ -1,0 +1,16 @@
+AzureDiagnostics
+| where OperationName == "QueryEnd"
+| where EventSubclass_s == 3
+| where Resource == "ENTERAZURERESOURCE" //Enter Azure Resource
+| where ApplicationName_s == "PowerBI"
+| where TimeGenerated > ago(30d) //Remove if you would prefer to use the time selection in Azure
+| summarize
+avg_load_time_sec = avg(toint(Duration_s)) / 1000,
+sum_load_time_sec = sum(toint(Duration_s)) / 1000,
+count_queries = count()
+by ApplicationContext_s,Resource
+| extend ReportId_ = tostring(parse_json(tostring(parse_json(ApplicationContext_s).Sources))[0].ReportId)
+| extend VisualId_ = tostring(parse_json(tostring(parse_json(ApplicationContext_s).Sources))[0].VisualId)
+| extend ReportUrl = strcat('https://app.powerbi.com/groups/me/reports/', ReportId_)
+| project-away ApplicationContext_s,Resource
+| order by sum_load_time_sec desc
